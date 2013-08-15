@@ -81,12 +81,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.actionOpen_port.triggered.connect(self.openPort)
         self.actionClose_port.triggered.connect(self.closePort)
-
+        
     def openPort(self):
-        " open port ttt"
-
         print 'Open port'
-
+        
     def closePort(self):
         print 'Close port'
 
