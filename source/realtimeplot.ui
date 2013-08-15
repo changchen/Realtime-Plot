@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>531</width>
-    <height>808</height>
+    <width>508</width>
+    <height>434</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -17,197 +17,45 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>MainWindow - iDevTool</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPlainTextEdit" name="plainTextEdit">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>38</y>
-      <width>256</width>
-      <height>192</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>10</y>
-      <width>133</width>
-      <height>20</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="Line" name="line">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>310</y>
-      <width>513</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="MatplotlibWidget" name="mplwidget">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>350</y>
-      <width>513</width>
-      <height>278</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QSlider" name="horizontalSlider">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>634</y>
-      <width>84</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>661</y>
-      <width>96</width>
-      <height>100</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0">
-      <widget class="QLabel" name="label_4">
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QSpinBox" name="spinBox"/>
-     </item>
-     <item row="2" column="1">
-      <widget class="QSpinBox" name="spinBox_2"/>
-     </item>
-     <item row="4" column="1">
-      <widget class="QSpinBox" name="spinBox_3"/>
-     </item>
-     <item row="6" column="1">
-      <widget class="QSpinBox" name="spinBox_4"/>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>366</x>
-      <y>9</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Raw Cmd</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>447</x>
-      <y>9</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Menu Cmd</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>319</y>
-      <width>269</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QCheckBox" name="checkBox_3">
-       <property name="text">
-        <string>Ch1</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="checkBox_2">
-       <property name="text">
-        <string>Ch2</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="checkBox_4">
-       <property name="text">
-        <string>Ch3</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="checkBox">
-       <property name="text">
-        <string>Ch4</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_3">
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLineEdit" name="lineEdit_command"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_mCmd">
+        <property name="text">
+         <string>Menu Cmd</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QPlainTextEdit" name="plainTextEdit_txtDisplay">
+      <property name="plainText">
+       <string>adasdasd</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+   <zorder>plainTextEdit_txtDisplay</zorder>
+   <zorder>lineEdit_command</zorder>
+   <zorder>plainTextEdit_txtDisplay</zorder>
+   <zorder>pushButton_mCmd</zorder>
+   <zorder>lineEdit_2</zorder>
+   <zorder>pushButton_3</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>531</width>
+     <width>508</width>
      <height>20</height>
     </rect>
    </property>
@@ -228,6 +76,7 @@
     <property name="title">
      <string>Tools</string>
     </property>
+    <addaction name="actionClear_window"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
@@ -238,6 +87,8 @@
     <property name="title">
      <string>Test</string>
     </property>
+    <addaction name="actionOpen_port"/>
+    <addaction name="actionClose_port"/>
     <addaction name="actionNew_from"/>
    </widget>
    <addaction name="menuFile"/>
@@ -267,14 +118,22 @@
     <string>new from</string>
    </property>
   </action>
+  <action name="actionClear_window">
+   <property name="text">
+    <string>Clear window</string>
+   </property>
+  </action>
+  <action name="actionOpen_port">
+   <property name="text">
+    <string>open port</string>
+   </property>
+  </action>
+  <action name="actionClose_port">
+   <property name="text">
+    <string>close port</string>
+   </property>
+  </action>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>MatplotlibWidget</class>
-   <extends>QWidget</extends>
-   <header>matplotlibwidget</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
