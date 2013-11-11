@@ -30,8 +30,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def getPortName(self):
         portNames = []
-        for port in serial.tools.list_ports.comports():
-            portNames.append(port[0])
+        try:
+            for port in serial.tools.list_ports.comports():
+                portNames.append(port[0])
+        except:
+            portNames.append('null')
+            self.printError("Failed to scan port!")
         return portNames
 
     def getPortConfig(self):
