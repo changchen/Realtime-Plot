@@ -2,7 +2,7 @@ import sys
 import serial
 import serial.tools.list_ports
 from PyQt4.QtGui import QApplication, QMainWindow, QTextCursor
-from PyQt4.QtCore import QThread, QObject # TODO: SIGNAL
+from PyQt4.QtCore import QThread, QObject, pyqtSignal
 from ui_mainWindow import Ui_MainWindow
 
 baudRates = ['300', '1200', '2400', '4800', '9600', '14400', '19200', '28800', '38400', '57600', '115200', '230400']
@@ -10,11 +10,11 @@ baudRates = ['300', '1200', '2400', '4800', '9600', '14400', '19200', '28800', '
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
-        self.ui = Ui_MainWindow()
-        self.setupUi()
         self.ser = None
         self.receiveData = ReadPort()
         self.sendData = WritePort()
+        self.ui = Ui_MainWindow()
+        self.setupUi()
 
     def setupUi(self):
         self.ui.setupUi(self)
@@ -23,6 +23,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # TODO QObject.connect(self.ui.comboBox_PortName, SIGNAL("activated()"), self.refreshComboBoxPortName)
         self.ui.pushButton_OpenPort.clicked.connect(self.openPort)
         self.ui.pushButton_ClosePort.clicked.connect(self.closePort)
+        self.receiveData.newData.connect(self.updateTxtDisplay)
 
     def refreshComboBoxPortName(self):
         self.ui.comboBox_PortName.clear()
@@ -48,6 +49,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         print self.ui.comboBox_Bandrate.currentText()
         return self.ui.comboBox_Bandrate.currentText()
 
+    def updateTxtDisplay(self, text):
+        self.ui.plainTextEdit_txtDisplay.moveCursor(QTextCursor.End)
+        self.ui.plainTextEdit_txtDisplay.insertPlainText(text)
+        self.ui.plainTextEdit_txtDisplay.moveCursor(QTextCursor.End)
+ 
     def printInfo(self, text):
         " print information to ui "
         self.ui.plainTextEdit_txtDisplay.appendPlainText(text)
@@ -88,6 +94,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
 class ReadPort(QThread):
+    newData = pyqtSignal(str)
+
     def start(self, ser, priority = QThread.InheritPriority):
         " Start receiving data from port "
         self.ser = ser
@@ -101,10 +109,10 @@ class ReadPort(QThread):
                 n = self.ser.inWaiting()
                 if n:
                     data = data + self.ser.read(n)
-                self.emit(SIGNAL("newData(QString)"), data)
+                self.newData.emit(data)
             except:
                 errMsg = "Reader thread is terminated unexpectedly."
-                self.emit(SIGNAL("error(QString)"), errMsg)
+                self.newData.emit(errMsg)
                 break
 
     def terminate(self):
