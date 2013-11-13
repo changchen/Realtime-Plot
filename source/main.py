@@ -16,6 +16,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.ui = Ui_MainWindow()
         self.setupUi()
 
+    def closeEvent(self, event):
+        self.closePort()
+        QMainWindow.closeEvent(self, event)
+
     def setupUi(self):
         self.ui.setupUi(self)
         self.ui.comboBox_Bandrate.addItems(baudRates)
